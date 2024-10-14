@@ -3,8 +3,11 @@ let ejs = require('ejs')
 
 /*************** 数据部分 ***************/
 let webSiteTitle = "细粒丁"
+let scriptLink = [
+    "assets/js/index.js",
+]
 let cssLink = [
-    "assets/css/main.css",
+    "assets/css/index.css",
     "https://at.alicdn.com/t/font_1625701_q2422cy34wn.css"
 ]
 let info = {
@@ -126,7 +129,7 @@ let works = [
 
 /*************** 各模板编译 ***************/
 let _head = fs.readFileSync("./src/template/_head.ejs", "utf-8")
-let _headHTML = ejs.render(_head, { title: webSiteTitle, cssLink })
+let _headHTML = ejs.render(_head, { title: webSiteTitle, scriptLink, cssLink })
 // console.log(_headHTML)
 
 let _info = fs.readFileSync("./src/template/_info.ejs", "utf-8")
@@ -221,9 +224,12 @@ let right_containerHTML = ejs.render(right_container, { partsHTML })
 /*************** 生成最终文件并写入 ***************/
 let main = fs.readFileSync("./src/template/main.ejs", "utf-8")
 let HTML = ejs.render(main, { _headHTML, left_containerHTML, right_containerHTML })
-fs.writeFileSync("./index.html", HTML)
+fs.writeFileSync("./public/index.html", HTML)
 
-let css = fs.readFileSync("./src/css/main.css", "utf-8")
+fs.cpSync('./src/js', './public/assets/js', { recursive: true, force: true });
+fs.cpSync('./src/css', './public/assets/css', { recursive: true, force: true });
+
+let css = fs.readFileSync("./src/css/index.css", "utf-8")
 let percents = []
 for (let i = 0; i < progress.length; i++) {
     const item = progress[i];
@@ -239,4 +245,4 @@ for (let i = 0; i < progress.length; i++) {
     }
     `+ css
 }
-fs.writeFileSync("./assets/css/main.css", css, "utf-8")
+fs.writeFileSync("./public/assets/css/index.css", css, "utf-8")
