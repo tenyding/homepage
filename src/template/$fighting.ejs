@@ -1,0 +1,14 @@
+<div id="fighting">
+    <%_ progress.forEach(function(item){ -%>
+    <div class="progress">
+        <div class="progress-title"><%=item.title%></div>
+        <div class="progress-bg">
+            <div class="progress-determinate animation_growWidth_<%= item.percent.split('%')[0] %>" style='
+            width: <%=item.percent%>;
+            background-color: <%=item.bgColor||""%>;
+            '></div>
+        </div>
+        <div class="progress-tooltip"><%=item.tooltip%></div>
+    </div>
+    <%_ }); %>
+</div>

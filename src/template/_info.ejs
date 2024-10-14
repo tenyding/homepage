@@ -1,0 +1,10 @@
+<avatar><img src="<%=info.avatar%>" alt=""></avatar>
+<div class="left-info">
+    <div class="title"><%=info.title%></div>
+    <div class="title2"><%=info.title2%></div>
+    <div class="solgan">
+        <%_ info.solgan.forEach(function(solgan){ -%>
+        <span><%=solgan%></span><br>
+        <%_ }); -%>
+    </div>
+</div>

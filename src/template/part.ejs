@@ -1,0 +1,12 @@
+<%_ parts.forEach(function(part){ -%>
+<div class="part" id="<%=part.id%>_part">
+    <% if (part.title.name) { -%>
+    <div class="part-title">
+        <span><a href="<%=part.title.href%>_part"><%-part.title.name%></a></span>
+        <a target="_blank" href="<%=part.title.href%>"><%-part.title.a_name%></a>
+    </div>
+    <% } -%>
+    <%-part.template%>
+
+</div>
+<%_ }); -%>
