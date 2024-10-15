@@ -67,11 +67,19 @@
     color: #e0e0e0;
     background: rgba(255, 64, 129, .35);
 }
+*::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: rgb(105, 180, 202);
+}
 
 body {
     font-family: Roboto, Noto, Helvetica, Arial, sans-serif;
     color: white;
     --shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    overflow-x: hidden;
 }
 
 a {
@@ -369,16 +377,6 @@ avatar img {
     border-radius: 10px;
 }
 
-@keyframes growWidth {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 35%;
-    }
-}
-
 #contact {}
 
 .contact_btn {
@@ -393,9 +391,36 @@ avatar img {
     margin: 0 5px;
 }
 
+#article {
+    position: relative;
+}
 
+#article .a_container {
+    position: relative;
+}
 
-#article {}
+.a_container:hover .pointer {
+    position: absolute;
+    --l: 15px;
+    --g: 2px;
+    --t: 2px;
+    width: calc(100% + var(--g)* 2);
+    height: calc(100% + var(--g)* 2);
+    left: calc(0px - var(--t) - var(--g));
+    top: calc(0px - var(--t) - var(--g));
+    border: var(--t) solid #f79bba;
+    mask: conic-gradient(at var(--l) var(--l), transparent 75%, red 75%) 0 0 / calc(100% - var(--l)) calc(100% - var(--l));
+    transition: 0.05s;
+    animation: focus 1s forwards;
+}
+@keyframes focus {
+    from {
+        transform: scaleX(1.2) scaleY(1.3);
+    }
+    to {
+        transform: scale(1)
+    }
+}
 
 .a_container {
     display: block;
@@ -425,6 +450,7 @@ avatar img {
 }
 
 #works .a_container {
+    position: relative;
     padding: 5px 10px;
     box-shadow: none;
 }
