@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node ./src/main.js"
+    "build": "node ./src/main.js",
+    "p": "node ./src/public.js",
+    "public": "node ./src/public.js && cd public && git add . && git commit -m \"update public\" && git push origin main -f"
   },
   "author": "细粒丁",
   "license": "MIT",
